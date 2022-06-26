@@ -34,8 +34,9 @@ def get_chunk(byte1=None, byte2=None):
     return chunk, start, length, file_size
 
 
-@app.route('/video')
-def get_file():
+@app.route('/video/<cameraId>')
+def get_file(cameraId):
+    # print("CameraId: ", cameraId)
     range_header = request.headers.get('Range', None)
     byte1, byte2 = 0, None
     if range_header:
