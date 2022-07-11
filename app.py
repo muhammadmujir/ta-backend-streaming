@@ -16,8 +16,11 @@ def after_request(response):
     return response
 
 
-def get_chunk(byte1=None, byte2=None):
-    full_path = "C:\\Users\\Admin\\Downloads\\1.mp4"
+def get_chunk(fileName, byte1=None, byte2=None):
+    full_path = "F:\\Backup\\TA\\Model\\{}.mp4".format(fileName)
+    # full_path = "C:\\Users\\Mujir\\Downloads\\Shopping, People, Commerce, Mall, Many, Crowd, Walking   Free Stock video footage   YouTube.mp4"
+    # full_path = "C:\\Users\\Mujir\\Downloads\\The CCTV People Demo 2.mp4"
+    # full_path = "C:\\Users\\Mujir\\Downloads\\Street scene at night with walking people CCTV style  night view.mp4"
     file_size = os.stat(full_path).st_size
     start = 0
     
@@ -48,7 +51,7 @@ def get_file(cameraId):
         if groups[1]:
             byte2 = int(groups[1])
        
-    chunk, start, length, file_size = get_chunk(byte1, byte2)
+    chunk, start, length, file_size = get_chunk(cameraId, byte1, byte2)
     resp = Response(chunk, 206, mimetype='video/mp4',
                       content_type='video/mp4', direct_passthrough=True)
     resp.headers.add('Content-Range', 'bytes {0}-{1}/{2}'.format(start, start + length - 1, file_size))
