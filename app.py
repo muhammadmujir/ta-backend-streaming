@@ -17,7 +17,8 @@ def after_request(response):
 
 
 def get_chunk(fileName, byte1=None, byte2=None):
-    full_path = "F:\\Backup\\TA\\Model\\{}.mp4".format(fileName)
+    # full_path = "F:\\Backup\\TA\\Model\\{}.mp4".format(fileName)
+    full_path = "F:\\Backup\\TA\\Model\\1.mp4"
     # full_path = "C:\\Users\\Mujir\\Downloads\\Shopping, People, Commerce, Mall, Many, Crowd, Walking   Free Stock video footage   YouTube.mp4"
     # full_path = "C:\\Users\\Mujir\\Downloads\\The CCTV People Demo 2.mp4"
     # full_path = "C:\\Users\\Mujir\\Downloads\\Street scene at night with walking people CCTV style  night view.mp4"
@@ -59,3 +60,4 @@ def get_file(cameraId):
 
 if __name__ == "__main__":
     app.run(host='192.168.43.194', port=5001, debug=True, threaded=True)
+    # app.run(host='192.168.1.78', port=5001, debug=True, threaded=True)
