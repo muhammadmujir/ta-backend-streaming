@@ -4,11 +4,17 @@ Created on Sun Jun 26 11:56:49 2022
 
 @author: Admin
 """
+import os
 from flask import Flask, request, Response
 import re
+import argparse
 
 app = Flask(__name__)
-import os
+parser = argparse.ArgumentParser(description='Crowd App')
+parser.add_argument('--debug', action='store_true', help='enable debug mode')
+parser.add_argument('host', metavar='HOST', help='ip address of server')
+parser.add_argument('--path', '-p', metavar='VIDEO_PATH', default=None,type=str, help='path to the video')
+args = parser.parse_args()
 
 @app.after_request
 def after_request(response):
@@ -18,7 +24,8 @@ def after_request(response):
 
 def get_chunk(fileName, byte1=None, byte2=None):
     # full_path = "F:\\Backup\\TA\\Model\\{}.mp4".format(fileName)
-    full_path = "F:\\Backup\\TA\\Model\\1.mp4"
+    # full_path = "F:\\Backup\\TA\\Model\\1.mp4"
+    full_path = args.path
     # full_path = "C:\\Users\\Mujir\\Downloads\\Shopping, People, Commerce, Mall, Many, Crowd, Walking   Free Stock video footage   YouTube.mp4"
     # full_path = "C:\\Users\\Mujir\\Downloads\\The CCTV People Demo 2.mp4"
     # full_path = "C:\\Users\\Mujir\\Downloads\\Street scene at night with walking people CCTV style  night view.mp4"
@@ -59,5 +66,5 @@ def get_file(cameraId):
     return resp
 
 if __name__ == "__main__":
-    app.run(host='192.168.43.194', port=5001, debug=True, threaded=True)
+    app.run(host=args.host, port=5001, debug=args.debug, threaded=True)
     # app.run(host='192.168.1.78', port=5001, debug=True, threaded=True)
