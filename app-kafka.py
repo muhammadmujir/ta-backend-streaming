@@ -63,7 +63,7 @@ def kafkaproducer(message):
     emit('logs', {'data': 'Added ' + message + ' to topic'})
     emit('kafkaproducer', {'data': message})
     producer.close()
-    kafkaconsumer(message)
+    # kafkaconsumer(message)
 
 
 if __name__ == '__main__':

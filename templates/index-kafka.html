@@ -25,6 +25,10 @@
                 socket.emit('kafkaproducer', $('#emit_data').val());
                 return false;
             });
+            $('form#consume').submit(function(event) {
+                socket.emit('kafkaconsumer', $('#emit_data').val());
+                return false;
+            });
         });
     </script>
 </head>
@@ -32,6 +36,9 @@
 <form id="emit" method="POST" action='#'>
     <input type="text" name="emit_data" id="emit_data" placeholder="Message">
     <input type="submit" value="Echo">
+</form>
+<form id="consume" method="POST" action='#'>
+    <input type="submit" value="Consume">
 </form>
 <h2>Logs</h2>
 <div id="log"></div>
