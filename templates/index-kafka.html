@@ -4,7 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
-            var socket = io.connect('http://crowd.eastus2.cloudapp.azure.com:5000/kafka');
+            var socket = io.connect('http://streaming.australiaeast.cloudapp.azure.com:5000/kafka');
 
             socket.on('kafkaconsumer1', function(msg) {
                 $('#consumer').html("")
